@@ -19,7 +19,7 @@
           :key="index"
         >
           <router-link to="#">
-            <img :src="recommended.image" :alt="recommended.name" />
+            <img :src="recommended.image" :alt="recommended.name"  class="rounded-lg border border-gray-600"/>
           </router-link>
         </vue-glide-slide>
         <template slot="control">
@@ -51,7 +51,7 @@
       >
         <vue-glide-slide v-for="(watched, index) in watchings" :key="index">
           <router-link to="#">
-            <img :src="watched.image" :alt="watched.name" />
+            <img :src="watched.image" :alt="watched.name" class="rounded-lg border border-gray-600"/>
           </router-link>
         </vue-glide-slide>
         <template slot="control">
