@@ -1,18 +1,53 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container mx-auto">
+    <div class="my-8">
+      <vue-glide :perView="1" :bullet="true" class="mb-12">
+        <vue-glide-slide v-for="(item, index) in movies" :key="index">
+          <router-link :to="item.url">
+            <img :src="item.image" :alt="item.name" class="rounded" />
+          </router-link>
+        </vue-glide-slide>
+        <template slot="control">
+          <button
+            data-glide-dir="<"
+            class="absolute w-8 h-8 rounded-full bg-gray-500"
+            style="top: calc(50% - 16px); left: 18px"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            data-glide-dir=">"
+            class="absolute w-8 h-8 rounded-full bg-gray-500"
+            style="top: calc(50% - 16px); right: 10px"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </template>
+      </vue-glide>
+
+      <card-category></card-category>
+
+      <recommended></recommended>
+      
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import movies from "@/assets/dic/news.js";
+import CardCategory from '@/components/CardCategory';
+import Recommended from '@/components/Recommended';
 export default {
-  name: 'Home',
+  name: "Home",
+
+  data() {
+    return {
+      movies: movies.news,
+    };
+  },
   components: {
-    HelloWorld
+    CardCategory,
+    Recommended
   }
-}
+};
 </script>
